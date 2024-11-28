@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block head_title %}Reminder{% endblock %} {% block
+style %}
+<link rel="stylesheet" href="static/reminder.css" />
+{% endblock %} {% block script %}
+<script src="static/reminder.js"></script>
+
+{% endblock %} {% block title %}Reminder{% endblock %} {% block content %}
+<div class="content">
+  <div class="toolbar">
+    <input
+      type="text"
+      id="searchBar"
+      placeholder="Search reminders..."
+      class="search-bar"
+    />
+    <select
+      id="filterSelect"
+      class="filter-select"
+      onchange="filterReminders()"
+    >
+      <option value="all">All</option>
+      <option value="time">Time</option>
+      <option value="time&loc">Time & Location</option>
+      <option value="loc">Location</option>
+    </select>
+    <button class="create-btn" onclick="createReminder()">+ Create</button>
+  </div>
+
+  <div class="reminders"></div>
+</div>
+{% endblock %}

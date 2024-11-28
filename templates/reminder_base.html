@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{%block head_title%}{%endblock%}</title>
+  <link href="../static/reminder-base.css" rel="stylesheet"/>
+  {%block script%}{%endblock%}
+  <style>
+    .hidden {
+      display: none;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .back-bt {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .back-bt:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <button class="back-bt" onclick="window.location.href = '/reminder'">Back</button>
+  <div id="form-container">
+    <form id="dynamic-form">
+      <h1>{%block form_title%}{%endblock%}</h1>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input id="description" name="description" type="text" required />
+        
+        <label for="notification-selector">Notification Type</label>
+        <select id="notification-selector" name="notification">
+          <option value="mail">Mail</option>
+        </select>
+        
+        <label for="type-selector">Select Reminder Type:</label>
+        <select id="type-selector" name="type" required>
+          <option value="time" selected>Time</option>
+          <option value="loc">Location</option>
+          <option value="time&loc">Time & Location</option>
+        </select>
+      </div>
+
+      <div id="time-fields" class="form-group">
+        <label for="time-input">Time:</label>
+        <input type="time" id="time-input" name="time" />
+
+        <label for="date-input">Date:</label>
+        <input type="date" id="date-input" name="date" />
+      </div>
+
+      <div id="location-fields" class="form-group hidden">
+        <label for="location-selector">Select Location:</label>
+        <select id="location-selector" name="location">
+          <option value="">-- Select Location --</option>
+        </select>
+      </div>
+
+      <button type="button" onclick="{%block button_function%}{%endblock%}">{%block button_name%}{%endblock%}</button>
+    </form>
+  </div>
+
+</body>
+</html>

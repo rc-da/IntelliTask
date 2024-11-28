@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Authentication</title>
+    <script src="static/authentication.js"></script>
+    <link rel="stylesheet" href="static/authentication.css" />
+  </head>
+  <body>
+    <button class="back-bt" onclick="redirectHome()">Back</button>
+    <div class="login" id="login-form">
+      <form onsubmit="sendLoginRequest(event)" class="login-form">
+        <label for="email">E-mail </label>
+        <input type="text" name="email" />
+        <label for="password">Password </label>
+        <input type="password" name="password" />
+        <input type="submit" value="Log In" />
+        <a href="#" onclick="switchTo('signup')">New User? Sign Up</a>
+      </form>
+    </div>
+    <div class="signup" id="signup-form" style="display: none">
+      <form onsubmit="sendSignUpRequest(event)" class="signup-form">
+        <label for="name">Name </label>
+        <input type="text" name="name" />
+        <label for="phno">Phone No. </label>
+        <input type="number" name="phno" />
+        <label for="email">E-mail </label>
+        <input type="text" name="email" />
+        <label for="password">Password </label>
+        <input type="password" name="password" />
+        <input type="submit" value="Sign up" />
+        <a href="#" onclick="switchTo('login')"
+          >Already have an account? Login</a
+        >
+      </form>
+    </div>
+  </body>
+</html>

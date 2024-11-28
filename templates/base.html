@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="static/base.css" />
+    {% block style%}{%endblock%}
+    <title>{% block head_title %}{% endblock %}</title>
+    <script src="static/base.js"></script>
+    {% block script%}{%endblock%}
+    
+  </head>
+  <body>
+    <div class="header">
+      <div class="menu">
+        <button
+          class="menu-bt"
+          onclick="menuOverLay()"
+          {%
+          if
+          not
+          user_id
+          %}
+          disabled
+          {%
+          endif
+          %}
+        >
+          &#61;
+        </button>
+      </div>
+      <h2 class="title">{% block title %}{% endblock %}</h2>
+      <button
+        class="log-bt"
+        onclick="{% if user_id %}logOut() {% else %}redirectToAuth() {% endif %}"
+      >
+        {% if user_id %}Log Out{% else %}Log In{% endif %}
+      </button>
+    </div>
+
+    <div class="menu-overlay">
+      <button class="close-bt" onclick="closeMenu()">X</button>
+      <div class="menu">
+        <a href="/home">Home</a>
+        <a href="/reminder">Reminder</a>
+        <a href="/map">Map</a>
+      </div>
+    </div>
+
+    {% block content %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block head_title %}Map{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<link href="../static/map.css" rel="stylesheet" />
+{% endblock %}
+{% block script %}
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="../static/map.js"></script>
+{% endblock %}
+{% block title %}Map{% endblock %}
+{% block content %}
+<div id="map-container" style="height: 500px; width: 100%;"></div>
+
+<div class="form-container">
+  <h2>Add Location</h2>
+  <form id="location-form">
+    <label>
+      Location Detail:
+      <input type="text" id="location-detail" required />
+    </label>
+    <label>
+      Latitude:
+      <input type="text" id="latitude" readonly required />
+    </label>
+    <label>
+      Longitude:
+      <input type="text" id="longitude" readonly required />
+    </label>
+    <button type="submit">Add Location</button>
+  </form>
+</div>
+
+<div class="locations-table">
+  <h2>Existing Locations</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Location Detail</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="locations-list">
+      <!-- Locations will be populated here -->
+    </tbody>
+  </table>
+</div>
+{% endblock %}
